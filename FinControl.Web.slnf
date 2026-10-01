@@ -1,0 +1,1 @@
+{"solution":{"path":"FinControl.sln","projects":["FinControl.Domain\\FinControl.Domain.csproj","FinControl.Application\\FinControl.Application.csproj","FinControl.Infrastructure\\FinControl.Infrastructure.csproj","FinControl.Web\\FinControl.Web.csproj","FinControl.Tests\\FinControl.Tests.csproj"]}}

@@ -1,0 +1,52 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinControl.Domain", "FinControl.Domain\FinControl.Domain.csproj", "{767EDEEF-50E9-4830-A1D3-679F50937E1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinControl.Application", "FinControl.Application\FinControl.Application.csproj", "{B3AEB1B7-1AEC-4574-8F28-923AF55E0054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinControl.Infrastructure", "FinControl.Infrastructure\FinControl.Infrastructure.csproj", "{4014A9AF-4E2D-46B1-AAE3-AF803E68B9AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinControl.WinForms", "FinControl.WinForms\FinControl.WinForms.csproj", "{3DCB0FDD-9498-4AE1-91A5-AA8189111054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinControl.Tests", "FinControl.Tests\FinControl.Tests.csproj", "{60CA1B86-FD04-4B81-922E-BBA4B4485ED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinControl.Web", "FinControl.Web\FinControl.Web.csproj", "{F125D97E-01C6-4EBD-9B23-98B24201F9AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F125D97E-01C6-4EBD-9B23-98B24201F9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F125D97E-01C6-4EBD-9B23-98B24201F9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F125D97E-01C6-4EBD-9B23-98B24201F9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F125D97E-01C6-4EBD-9B23-98B24201F9AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{767EDEEF-50E9-4830-A1D3-679F50937E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{767EDEEF-50E9-4830-A1D3-679F50937E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{767EDEEF-50E9-4830-A1D3-679F50937E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{767EDEEF-50E9-4830-A1D3-679F50937E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AEB1B7-1AEC-4574-8F28-923AF55E0054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AEB1B7-1AEC-4574-8F28-923AF55E0054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AEB1B7-1AEC-4574-8F28-923AF55E0054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AEB1B7-1AEC-4574-8F28-923AF55E0054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4014A9AF-4E2D-46B1-AAE3-AF803E68B9AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4014A9AF-4E2D-46B1-AAE3-AF803E68B9AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4014A9AF-4E2D-46B1-AAE3-AF803E68B9AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4014A9AF-4E2D-46B1-AAE3-AF803E68B9AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DCB0FDD-9498-4AE1-91A5-AA8189111054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DCB0FDD-9498-4AE1-91A5-AA8189111054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DCB0FDD-9498-4AE1-91A5-AA8189111054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DCB0FDD-9498-4AE1-91A5-AA8189111054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60CA1B86-FD04-4B81-922E-BBA4B4485ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60CA1B86-FD04-4B81-922E-BBA4B4485ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60CA1B86-FD04-4B81-922E-BBA4B4485ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60CA1B86-FD04-4B81-922E-BBA4B4485ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

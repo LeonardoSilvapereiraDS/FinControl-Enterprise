@@ -1,0 +1,10 @@
+**/bin
+**/obj
+.git
+.gitignore
+**/*.db
+**/*.db-shm
+**/*.db-wal
+**/keys
+node_modules
+qa
