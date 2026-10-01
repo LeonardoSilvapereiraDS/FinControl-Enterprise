@@ -1,0 +1,41 @@
+# Opcional. Não é necessário para uso local. Configure o domínio antes de executar.
+services:
+  app:
+    build:
+      context: ..
+    restart: unless-stopped
+    environment:
+      FINCONTROL_PUBLIC_URL: https://${FINCONTROL_DOMAIN:?Defina FINCONTROL_DOMAIN no arquivo .env}
+      FINCONTROL_TRUSTED_PROXY: 172.29.88.2
+      AllowedHosts: ${FINCONTROL_DOMAIN}
+    volumes:
+      - financial-data:/data
+    networks:
+      fincontrol:
+        ipv4_address: 172.29.88.3
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      FINCONTROL_DOMAIN: ${FINCONTROL_DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - app
+    networks:
+      fincontrol:
+        ipv4_address: 172.29.88.2
+volumes:
+  financial-data:
+  caddy-data:
+  caddy-config:
+networks:
+  fincontrol:
+    ipam:
+      config:
+        - subnet: 172.29.88.0/24
