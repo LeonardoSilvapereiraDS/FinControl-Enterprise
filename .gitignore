@@ -504,3 +504,7 @@ backups/
 *.p12
 .env.*
 !.env.example
+
+# Pacotes locais e evidências de validação
+dist/
+desktop-evidence/

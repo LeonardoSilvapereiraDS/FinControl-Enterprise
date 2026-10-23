@@ -4,7 +4,17 @@ Controle financeiro pessoal e de caixa para MEIs e pequenas equipes, desenvolvid
 
 A interface web usa temas claro, escuro e automático. A aplicação Windows Forms também integra a solução e compartilha as regras financeiras.
 
-## Interface
+## Aplicativo Windows Forms
+
+A nova versão nativa abre em uma janela Windows, com login, espaços financeiros, temas claro/escuro/sistema e módulos de lançamentos, contas, categorias, orçamentos, metas, recorrências, relatórios, importação e backup.
+
+- **Código-fonte:** execute `INICIAR-WINFORMS.bat` ou abra `FinControl.sln` / `FinControl.Desktop.slnf` e defina `FinControl.WinForms` como projeto de inicialização. Requer Windows e SDK .NET 8.
+- **Sem SDK:** na aba **Actions → Windows Desktop**, abra uma execução aprovada e baixe o artefato **FinControl-Windows-portatil**. Extraia tudo e execute `FinControl.WinForms.exe`.
+- **Gerar o pacote:** execute `PUBLICAR-WINDOWS.bat`. Distribua toda a pasta `dist/FinControl-Windows`.
+
+Consulte o [guia do aplicativo Windows](docs/WINDOWS.md).
+
+## Interface web
 
 As capturas abaixo usam dados fictícios.
 
