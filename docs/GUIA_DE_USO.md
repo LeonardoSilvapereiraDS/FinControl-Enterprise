@@ -2,7 +2,11 @@
 
 Gestão de finanças pessoais e de caixa para MEIs e empresas. A nova interface web funciona no navegador do computador, tablet e celular. O projeto C# original foi preservado; as camadas Domain, Application e Infrastructure são compartilhadas.
 
-## Comece aqui — Windows
+## Aplicativo Windows Forms
+
+Para a nova janela nativa, abra `INICIAR-WINFORMS.bat` ou selecione `FinControl.WinForms` na solução completa. O guia [WINDOWS.md](WINDOWS.md) detalha login, instalação e pacote sem SDK.
+
+## Comece aqui — versão web no Windows
 
 1. Extraia o ZIP para uma pasta, por exemplo `Documentos\FinControl`.
 2. Instale o **SDK .NET 8**: https://dotnet.microsoft.com/download/dotnet/8.0. Escolha **SDK**, não apenas Runtime.
@@ -85,7 +89,7 @@ Por padrão, usa a pasta `FinControl` em `LocalApplicationData` do sistema. No W
 
 Para um diretório independente, defina `FINCONTROL_DATA_DIR` antes de iniciar. O banco é SQLite. As migrações são aplicadas automaticamente no início.
 
-Se houver dados da versão Windows anterior e ainda nenhum login web, o primeiro cadastro pede um **código inicial** exibido no terminal para proteger o acesso a esse histórico. Os dados anteriores serão vinculados ao primeiro usuário como espaços adicionais. O aplicativo Windows continua usando o usuário local original; os novos espaços e a gestão de equipe são acessados pela versão web.
+Se houver dados da versão Windows anterior e ainda nenhum login web, o primeiro cadastro pede um **código inicial** exibido no terminal para proteger o acesso a esse histórico. Os dados anteriores serão vinculados ao primeiro usuário como espaços adicionais. A nova versão Windows Forms também usa login, espaços e permissões. No cadastro nativo, a vinculação dos dados antigos é explicada e autorizada localmente, sem exigir copiar o código do terminal.
 
 Se não houver dados antigos, o cadastro começa normalmente, sem código. A criação de contas está aberta a quem consegue acessar a instalação; cada nova conta recebe seu próprio espaço.
 
@@ -103,7 +107,7 @@ Não há recuperação de senha por e-mail: nenhum provedor de e-mail está conf
 - `FinControl.Application`: serviços compartilhados por usuário financeiro.
 - `FinControl.Infrastructure`: EF Core, SQLite, configurações e migrações.
 - `FinControl.Web`: ASP.NET Core, autenticação, verificação de acesso por espaço, importação, recorrências, backup e interface HTML/CSS/JavaScript sem CDN.
-- `FinControl.WinForms`: aplicação original para Windows, com correções de filtros e validações compartilhadas.
+- `FinControl.WinForms`: interface Windows nativa com login, temas, módulos financeiros e serviço local compartilhado.
 - `FinControl.Tests`: testes xUnit de domínio e serviços.
 - `tests/api_smoke.py`: teste integrado contra uma instalação temporária.
 - `tests/ui.mjs`: fluxos no Chromium e verificação de largura de 360 a 1440 px.

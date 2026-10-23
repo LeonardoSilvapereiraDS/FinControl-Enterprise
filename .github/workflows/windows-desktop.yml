@@ -1,0 +1,50 @@
+name: Windows Desktop
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  desktop:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Compilar solucao
+        run: dotnet build FinControl.sln -c Release
+      - name: Testar regras financeiras
+        run: dotnet test FinControl.Tests/FinControl.Tests.csproj -c Release --no-build
+      - name: Testar API compartilhada
+        shell: pwsh
+        run: |
+          dotnet build FinControl.Web/FinControl.Web.csproj -c Debug
+          python tests/api_smoke.py --dotnet dotnet
+      - name: Testar interface nativa e capturar telas
+        shell: pwsh
+        env:
+          FINCONTROL_SMOKE_OUTPUT: ${{ github.workspace }}\desktop-evidence
+        run: |
+          $app = Start-Process -FilePath '.\FinControl.WinForms\bin\Release\net8.0-windows\FinControl.WinForms.exe' -ArgumentList '--smoke-test' -PassThru
+          if (-not $app.WaitForExit(180000)) { $app.Kill(); throw 'Teste da interface excedeu 3 minutos.' }
+          if ($app.ExitCode -ne 0) { Get-Content desktop-evidence\failure.txt -ErrorAction SilentlyContinue; throw "Falha na interface: $($app.ExitCode)" }
+          Get-Content desktop-evidence\checks.txt
+      - name: Publicar Windows x64 com runtime incluido
+        run: dotnet publish FinControl.WinForms/FinControl.WinForms.csproj -c Release -r win-x64 --self-contained true -o dist/FinControl-Windows
+      - name: Disponibilizar aplicativo portatil
+        uses: actions/upload-artifact@v4
+        with:
+          name: FinControl-Windows-portatil
+          path: dist/FinControl-Windows/
+          retention-days: 30
+      - name: Evidencias dos testes nativos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WinForms-evidencias
+          path: desktop-evidence/
+          retention-days: 14

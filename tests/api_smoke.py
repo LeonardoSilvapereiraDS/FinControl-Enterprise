@@ -90,4 +90,6 @@ with tempfile.TemporaryDirectory(prefix='fincontrol-api-') as temp:
  finally:
   proc.terminate()
   try:proc.wait(timeout=5)
-  except subprocess.TimeoutExpired:proc.kill()
+  except subprocess.TimeoutExpired:
+   proc.kill();proc.wait(timeout=5)
+  log.close()
