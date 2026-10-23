@@ -1,7 +1,7 @@
 name: Windows Desktop
 on:
   push:
-    branches: [main, feat/winforms-enterprise]
+    branches: [main]
   pull_request:
   workflow_dispatch:
 permissions:

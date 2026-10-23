@@ -11,7 +11,7 @@ internal sealed partial class DesktopForm
         var bar = PageHeader("Importar extrato", "Traga seu extrato CSV ou OFX. Confira a prévia antes de confirmar a importação.");
         AddAction(bar, "Selecionar arquivo", ImportStatement, write: true, primary: true);
         var help = new TextBox { Dock = DockStyle.Fill, Multiline = true, ReadOnly = true, BorderStyle = BorderStyle.None,
-            Text = "COMO IMPORTAR\r\n\r\n1. Selecione um arquivo CSV (UTF-8) ou OFX de até 2 MB.\r\n2. Escolha a conta e as categorias de entrada e saída.\r\n3. Confira as primeiras 50 linhas e o número de duplicatas.\r\n4. Confirme para salvar.\r\n\r\nCabeçalho CSV: data;descricao;valor;id\r\nExemplo: 23/10/2026;Pagamento recebido;150,00;banco-001\r\n\r\nValores negativos são despesas. O campo id é opcional.\r\nLançamentos importados do extrato são considerados pagos.\r\n\r\nA detecção de duplicatas evita importar novamente o mesmo movimento na mesma conta." };
+            Text = "COMO IMPORTAR\r\n\r\n1. Selecione um arquivo CSV (UTF-8 ou Windows-1252) ou OFX de até 2 MB.\r\n2. Escolha a conta e as categorias de entrada e saída.\r\n3. Confira as primeiras 50 linhas e o número de duplicatas.\r\n4. Confirme para salvar.\r\n\r\nCabeçalho CSV: data;descricao;valor;id\r\nExemplo: 23/10/2026;Pagamento recebido;150,00;banco-001\r\n\r\nValores negativos são despesas. O campo id é opcional.\r\nLançamentos importados do extrato são considerados pagos.\r\n\r\nA detecção de duplicatas evita importar novamente o mesmo movimento na mesma conta." };
         content.Controls.Add(help); help.BringToFront();
     }
     private async Task ImportStatement()
@@ -19,7 +19,10 @@ internal sealed partial class DesktopForm
         using var file = new OpenFileDialog { Filter = "Extratos (*.csv;*.ofx)|*.csv;*.ofx", CheckFileExists = true };
         if (file.ShowDialog(this) != DialogResult.OK) return;
         if (new FileInfo(file.FileName).Length > 2_000_000) throw new InvalidOperationException("Selecione um extrato de até 2 MB.");
-        var text = await File.ReadAllTextAsync(file.FileName);
+        var bytes = await File.ReadAllBytesAsync(file.FileName);
+        string text;
+        try { text = new UTF8Encoding(false, true).GetString(bytes).TrimStart('\uFEFF'); }
+        catch (DecoderFallbackException) { Encoding.RegisterProvider(CodePagesEncodingProvider.Instance); text = Encoding.GetEncoding(1252).GetString(bytes); }
         using var form = new EditorDialog("Preparar importação", System.IO.Path.GetFileName(file.FileName));
         form.Select("contaId", "Conta de destino", Accounts())
             .Select("categoriaReceitaId", "Categoria das receitas", state.Items("categories").Where(c => c.Flag("ativa") && c.Int("tipo") == 1).Select(c => new Option(c.Int("id"), c.Text("nome"))))

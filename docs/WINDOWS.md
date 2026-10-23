@@ -37,7 +37,7 @@ O pacote Windows x64 inclui o runtime .NET; não precisa compilar no computador 
 - Orçamentos mensais e metas com valores acumulados e prazos.
 - Recorrências semanais, mensais e anuais; geração de pendências e pausa/reativação. Para alterar os dados de uma regra, desative-a e crie outra.
 - Relatório por categoria separando valores pagos e pendentes; exportação CSV das tabelas.
-- Importação CSV UTF-8/OFX de até 2 MB, com prévia e detecção de duplicatas.
+- Importação CSV UTF-8/Windows-1252 e OFX de até 2 MB, com prévia e detecção de duplicatas.
 - Backup financeiro por espaço e restauração em um espaço novo, sem sobrescrever o atual.
 - Temas Claro, Escuro e Sistema, com preferência persistida e resposta à mudança do tema do Windows.
 

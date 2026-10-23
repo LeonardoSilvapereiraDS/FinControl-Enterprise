@@ -26,6 +26,8 @@ internal sealed partial class DesktopForm : Form
 
     public DesktopForm(bool smoke = false)
     {
+        using var iconStream = typeof(DesktopForm).Assembly.GetManifestResourceStream("FinControl.WinForms.Assets.App.ico");
+        if (iconStream != null) Icon = new Icon(iconStream);
         Text = "FinControl Enterprise • Windows"; Font = new Font("Segoe UI", 10);
         AutoScaleMode = AutoScaleMode.Dpi; ClientSize = new Size(1280, 800); MinimumSize = new Size(980, 640);
         StartPosition = FormStartPosition.CenterScreen; DoubleBuffered = true;
